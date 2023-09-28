@@ -12,11 +12,11 @@ const { generateEnum, generateEnumExtension, applyQuickFix } = require('./utils'
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
-	 //Register a command for generating enums
-	 const disposable = vscode.commands.registerCommand('fpenum.GenerateEnum', async () => {
+	//Register a command for generating enums
+	const disposable = vscode.commands.registerCommand('fpenum.GenerateEnum', async () => {
 		const enumName = await vscode.window.showInputBox({
-		prompt: 'Enter Enum Name',
-        placeHolder: '',
+			prompt: 'Enter Enum Name',
+			placeHolder: '',
 		})
 
 
@@ -34,11 +34,11 @@ function activate(context) {
 
 		const editor = vscode.window.activeTextEditor;
 
-		if(editor) {
-			editor.insertSnippet(new vscode.SnippetString(genEnum + `\n`+ genEnumExt));
+		if (editor) {
+			editor.insertSnippet(new vscode.SnippetString(genEnum + `\n` + genEnumExt));
 		}
 		context.subscriptions.push(disposable);
-	 });
+	});
 
 
 	context.subscriptions.push(vscode.commands.registerCommand('fpenum.ExtQuicfix', applyQuickFix));
@@ -46,7 +46,7 @@ function activate(context) {
 
 
 // This method is called when your extension is deactivated
-function deactivate() {}
+function deactivate() { }
 
 module.exports = {
 	activate,
